@@ -9,6 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.automissingcomponentdemo.databinding.ActivitySecondBinding
 import com.example.automissingcomponentdemo.viewmodel.SecondViewModel
 
+/**
+ * 2. Coroutinue + LiveData
+ * 与MVVM或MVI架构相适应
+ */
 class SecondActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySecondBinding

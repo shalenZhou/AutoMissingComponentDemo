@@ -11,16 +11,19 @@ import com.example.automissingcomponentdemo.handler.ViewGoneHandler
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 private const val MSG_GONE = 1
+private const val DELAY_TIME = 5000L
 
+/**
+ * 1. Handler
+ * 要注意内存泄漏
+ */
 class MainActivity : AppCompatActivity() {
 
-    private val fab by lazy {
-        findViewById<FloatingActionButton>(R.id.fab)
-    }
+    private val fab
+        get() = findViewById<FloatingActionButton>(R.id.fab)
 
-    private val handler by lazy {
-        ViewGoneHandler(this@MainActivity, fab)
-    }
+    private val handler
+        get() = ViewGoneHandler(this@MainActivity, fab)
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,6 +62,6 @@ class MainActivity : AppCompatActivity() {
     private fun sendMessageByHandler() {
         handler.removeMessages(MSG_GONE)
         val msg = handler.obtainMessage(MSG_GONE)
-        handler.sendMessageDelayed(msg, 5000)
+        handler.sendMessageDelayed(msg, DELAY_TIME)
     }
 }

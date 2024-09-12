@@ -9,16 +9,10 @@ import java.lang.ref.WeakReference
 
 private const val MSG_GONE = 1
 
-class ViewGoneHandler constructor(activity: Activity, view: View) :
+class ViewGoneHandler(activity: Activity, private val view: View) :
     Handler(Looper.getMainLooper()) {
 
-    private val weakReference: WeakReference<Activity>
-    private val view: View
-
-    init {
-        weakReference = WeakReference<Activity>(activity)
-        this.view = view
-    }
+    private val weakReference: WeakReference<Activity> = WeakReference<Activity>(activity)
 
     override fun handleMessage(msg: Message) {
         val activity = weakReference.get()

@@ -9,6 +9,8 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
+private const val DELAY_TIME = 5000L
+
 class SecondViewModel : ViewModel() {
     private var viewGoneCountDownTimer: Job? = null
 
@@ -21,7 +23,7 @@ class SecondViewModel : ViewModel() {
         viewGoneCountDownTimer?.cancel()
 
         viewGoneCountDownTimer = viewModelScope.launch {
-            delay(5000)
+            delay(DELAY_TIME)
             _isTouched.value = false
         }
     }
